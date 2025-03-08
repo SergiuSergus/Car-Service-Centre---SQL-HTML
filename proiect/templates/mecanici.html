@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecanici Bine Plătiți</title>
+</head>
+<body>
+    <h1>Lista Mecanici Bine Plătiți</h1>
+    <table border="1">
+        <tr>
+            <th>ID_Mecanici</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Specializare</th>
+            <th>Numar_de_telefon</th>
+            <th>Salariu</th>
+        </tr>
+        {% for mecanic in mecanici %}
+        <tr>
+            <td>{{ mecanic[0] }}</td>
+            <td>{{ mecanic[1] }}</td>
+            <td>{{ mecanic[2] }}</td>
+            <td>{{ mecanic[3] }}</td>
+            <td>{{ mecanic[4] }}</td>
+            <td>{{ mecanic[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

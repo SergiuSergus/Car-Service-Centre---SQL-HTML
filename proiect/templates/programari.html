@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programari pentru Inlocuire Bujii</title>
+</head>
+<body>
+    <h1>Programari pentru Inlocuire Bujii</h1>
+    <table border="1">
+        <tr>
+            <th>ID Programare</th>
+            <th>Data Programarii</th>
+            <th>Descriere Serviciu</th>
+            <th>ID Masina</th>
+        </tr>
+        {% for programare in programari %}
+        <tr>
+            <td>{{ programare[0] }}</td>
+            <td>{{ programare[1] }}</td>
+            <td>{{ programare[2] }}</td>
+            <td>{{ programare[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

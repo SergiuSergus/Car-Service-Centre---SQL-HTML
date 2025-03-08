@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERVICE AUTO</title>
+    <style>
+    h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 60px;
+    text-align: center;
+    color: black;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    }
+
+    h1 {
+        font-family: 'Arial', sans-serif;
+    font-size: 70px;
+    text-align: center;
+    color: black;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    }
+
+    .button {
+        background-color: #f4511e;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 16px;
+        
+        width: 180px;
+        height: 90px;
+        transition: all 0.5s;
+        cursor: pointer;
+        
+        display:block;
+        
+        border: 1px solid rgb(0, 0, 0);
+        }
+
+        .button:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+
+    body {
+    background-color: lightgray;
+    }   
+    </style>
+</head>
+<body>
+
+    <button class="button" onclick="location.href='/clienti_alfabetic'">Vezi Clienții în Ordine Alfabetică</button>
+    <button class="button" onclick="location.href='/piese_ieftine'">Vezi Piesele Cu Preț Mai Mic Decât 500 </button>
+    <button class="button" onclick="location.href='/facturi_scumpe'">Vezi Cele Mai Scumpe 3 Facturi </button>
+    <button class="button" onclick="location.href='/programari_inlocuire_bujii'">Vezi Programarile pentru Inlocuire Bujii </button>
+    
+    <button class="button" onclick="location.href='/mecanici_platiti_bine'">Vezi Cei Mai Bine Platiti 2 Mecanici </button>
+    <button class="button" onclick="location.href='/client_masini'">Vezi Masinile Clientului Condurache</button>
+    <button class="button" onclick="location.href='/programari_masini_renault_opel'">Vezi Programarile pentru Masini Renault sau Opel</button>
+
+    
+    <h1>Lista Masini</h1>
+    <table border="1">
+        <tr>
+            <th>ID_Masina</th>
+            <th>Marca</th>
+            <th>Model</th>
+            <th>An_de_fabricatie</th>
+            <th>Numar_de_inmatriculare</th>
+            <th>ID_Client</th>
+            <th>Actiuni</th>
+        </tr>
+        {% for masina in masini %}
+        <tr>
+            <td>{{ masina[0] }}</td>
+            <td>{{ masina[1] }}</td>
+            <td>{{ masina[2] }}</td>
+            <td>{{ masina[3] }}</td>
+            <td>{{ masina[4] }}</td>
+            <td>{{ masina[5] }}</td>
+            <td>
+                <form action="{{ url_for('delete_masina', id=masina[0]) }}" method="POST">
+                    <button type="submit">Sterge</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Adauga Masina</h2>
+    <form action="/add_masina" method="POST">
+        <label for="id">ID_Masina:</label><br>
+        <input type="text" id="id" name="id"><br>
+        <label for="marca">Marca:</label><br>
+        <input type="text" id="marca" name="marca"><br>
+        <label for="model">Model:</label><br>
+        <input type="text" id="model" name="model"><br>
+        <label for="an_fabricatie">An_de_fabricatie:</label><br>
+        <input type="text" id="an_fabricatie" name="an_fabricatie"><br>
+        <label for="numar_inmatriculare">Numar_de_inmatriculare:</label><br>
+        <input type="text" id="numar_inmatriculare" name="numar_inmatriculare"><br>
+        <label for="id_client">ID_Client:</label><br>
+        <input type="text" id="id_client" name="id_client"><br><br>
+        <button type="submit">Adauga Masina</button>
+    </form>
+    <h2>Modifica Masina</h2>
+    <form action="/update_masina" method="POST">
+        <label for="id">ID_Masina:</label><br>
+        <input type="text" id="id" name="id"><br>
+        <label for="column">Nume Colona:</label><br>
+        <input type="text" id="column" name="column"><br>
+        <label for="value">Valoare Noua:</label><br>
+        <input type="text" id="value" name="value"><br><br>
+        <button type="submit">Modifica Masina</button>
+    </form>
+
+    <br><br>
+    <h1>Lista Clienti</h1>
+    <table border="1">
+        <tr>
+            <th>ID_Client</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Adresa</th>
+            <th>Numare_de_telefon</th>
+            <th>Email</th>
+            <th>Actiuni</th>
+        </tr>
+        {% for client in clienti %}
+        <tr>
+            <td>{{ client[0] }}</td>
+            <td>{{ client[1] }}</td>
+            <td>{{ client[2] }}</td>
+            <td>{{ client[3] }}</td>
+            <td>{{ client[4] }}</td>
+            <td>{{ client[5] }}</td>
+            <td>
+                <form action="{{ url_for('delete_client', id=client[0]) }}" method="POST">
+                    <button type="submit">Sterge</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Adauga Client</h2>
+    <form action="/add_client" method="POST">
+        <label for="id">ID_Client:</label><br>
+        <input type="text" id="id" name="id"><br>
+        <label for="nume">Nume:</label><br>
+        <input type="text" id="nume" name="nume"><br>
+        <label for="prenume">Prenume:</label><br>
+        <input type="text" id="prenume" name="prenume"><br>
+        <label for="adresa">Adresa:</label><br>
+        <input type="text" id="adresa" name="adresa"><br>
+        <label for="telefon">Numar_de_telefon:</label><br>
+        <input type="text" id="telefon" name="telefon"><br>
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email"><br><br>
+        <button type="submit">Adauga Client</button>
+    </form>
+    <h2>Modifica Clientul</h2>
+    <form action="/update_client" method="POST">
+        <label for="id">ID_Client:</label><br>
+        <input type="text" id="id" name="id"><br>
+        <label for="column">Nume Colona:</label><br>
+        <input type="text" id="column" name="column"><br>
+        <label for="value">Valoare Noua:</label><br>
+        <input type="text" id="value" name="value"><br><br>
+        <button type="submit">Modifica Client</button>
+    </form>
+
+    <br><br>
+    <h1>Lista Programari</h1>
+    <table border="1">
+        <tr>
+            <th>ID_Programare</th>
+            <th>Data_programari</th>
+            <th>Descriere_serviciu</th>
+            <th>ID_Masina</th>
+        </tr>
+        {% for programare in programari %}
+        <tr>
+            <td>{{ programare[0] }}</td>
+            <td>{{ programare[1] }}</td>
+            <td>{{ programare[2] }}</td>
+            <td>{{ programare[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    <br><br>
+    <h1>Lista Piese</h1>
+    <table border="1">
+        <tr>
+            <th>ID_Piesa</th>
+            <th>Nume</th>
+            <th>Pret</th>
+            <th>Cantitate_stoc</th>
+            <th>Actiuni</th>
+        </tr>
+        {% for piesa in piese %}
+        <tr>
+            <td>{{ piesa[0] }}</td>
+            <td>{{ piesa[1] }}</td>
+            <td>{{ piesa[2] }}</td>
+            <td>{{ piesa[3] }}</td>
+            {% endfor %}
+            <td>
+               
+                <form action="{{ url_for('reset_piese') }}" method="POST">
+                    <button type="submit">Reseteaza Stoc</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

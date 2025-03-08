@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clienți în Ordine Alfabetică</title>
+</head>
+<body>
+    <h1>Clienți în Ordine Alfabetică</h1>
+    <table border="1">
+        <tr>
+            <th>ID_Client</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Adresă</th>
+            <th>Număr de Telefon</th>
+            <th>Email</th>
+        </tr>
+        {% for client in clienti %}
+        <tr>
+            <td>{{ client[0] }}</td>
+            <td>{{ client[1] }}</td>
+            <td>{{ client[2] }}</td>
+            <td>{{ client[3] }}</td>
+            <td>{{ client[4] }}</td>
+            <td>{{ client[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

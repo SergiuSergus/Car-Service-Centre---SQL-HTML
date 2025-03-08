@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masini Client</title>
+</head>
+<body>
+    <h1>Masini ale Clientului Condurache</h1>
+    <table border="1">
+        <tr>
+            <th>Marca</th>
+            <th>Model</th>
+        </tr>
+        {% for masina in masini %}
+        <tr>
+            <td>{{ masina[0] }}</td>
+            <td>{{ masina[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

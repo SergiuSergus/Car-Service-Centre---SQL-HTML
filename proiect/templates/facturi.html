@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturi Scumpe</title>
+</head>
+<body>
+    <h1>Facturi Scumpe</h1>
+    <table border="1">
+        <tr>
+            <th>ID Factura</th>
+            <th>Suma Totala</th>
+            <th>Data Emiterii</th>
+            <th>Detalii Plata</th>
+            <th>ID Programare</th>
+            <th>ID Piesa</th>
+            <th>Actiuni</th>
+        </tr>
+        {% for factura in facturi %}
+        <tr>
+            <td>{{ factura[0] }}</td>
+            <td>{{ factura[1] }}</td>
+            <td>{{ factura[2] }}</td>
+            <td>{{ factura[3] }}</td>
+            <td>{{ factura[4] }}</td>
+            <td>{{ factura[5] }}</td>
+            <td>
+                <form action="{{ url_for('delete_factura', id=factura[0]) }}" method="POST">
+                    <button type="submit">Sterge</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

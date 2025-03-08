@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programari Masini Renault/Opel</title>
+</head>
+<body>
+    <h1>Programari pentru Masini Renault sau Opel</h1>
+    <table border="1">
+        <tr>
+            <th>Marca</th>
+            <th>Model</th>
+            <th>Data Programarii</th>
+        </tr>
+        {% for programare in programari %}
+        <tr>
+            <td>{{ programare[0] }}</td>
+            <td>{{ programare[1] }}</td>
+            <td>{{ programare[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
